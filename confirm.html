@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You're In! - AscensionWindows™</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .confirmation-card {
+            background: white;
+            border-radius: 20px;
+            padding: 50px 40px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .confirmation-card::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 50%);
+            animation: sparkle 3s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { transform: rotate(0deg) scale(1); opacity: 0.5; }
+            50% { transform: rotate(180deg) scale(1.1); opacity: 0.8; }
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, #00b894, #00cec9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 3rem;
+            animation: bounce 0.8s ease-out;
+        }
+
+        @keyframes bounce {
+            0% { transform: translateY(-100px) scale(0.5); opacity: 0; }
+            50% { transform: translateY(-10px) scale(1.1); opacity: 0.8; }
+            100% { transform: translateY(0) scale(1); opacity: 1; }
+        }
+
+        .main-heading {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #333;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subheading {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .info-boxes {
+            display: grid;
+            gap: 20px;
+            margin: 40px 0;
+            text-align: left;
+        }
+
+        .info-box {
+            background: #f8f9ff;
+            border: 2px solid #e8ecff;
+            border-radius: 12px;
+            padding: 20px;
+            border-left: 4px solid #667eea;
+        }
+
+        .info-box h4 {
+            color: #333;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+
+        .info-box h4::before {
+            content: "⏰";
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .info-box:nth-child(2) h4::before { content: "📋"; }
+        .info-box:nth-child(3) h4::before { content: "📊"; }
+
+        .info-box p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .download-section {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .download-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .download-section p {
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .next-steps {
+            background: #fff8e1;
+            border: 2px solid #ffcc02;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+
+        .next-steps h3 {
+            color: #333;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .next-steps h3::before {
+            content: "✨";
+            margin-right: 10px;
+            font-size: 1.4rem;
+        }
+
+        .next-steps ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .next-steps li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+            color: #666;
+        }
+
+        .next-steps li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .footer-info {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .footer-info a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .footer-info a:hover {
+            text-decoration: underline;
+        }
+
+        .session-info {
+            background: #e8f5e8;
+            border: 2px solid #4caf50;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .confirmation-card {
+                padding: 40px 25px;
+                margin: 20px;
+            }
+            
+            .main-heading {
+                font-size: 2rem;
+            }
+            
+            .subheading {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="confirmation-card">
+            <div class="content">
+                <div class="success-icon">✨</div>
+                
+                <h1 class="main-heading">You're In — We're Building Your Windows ✨</h1>
+                
+                <p class="subheading">
+                    Welcome to Ascension Windows™! Your personalized daily timing windows are being crafted with precision.
+                </p>
+                
+                <div class="session-info" id="sessionInfo" style="display: none;">
+                    <strong>Payment Confirmed:</strong> Session ID <span id="sessionId"></span>
+                </div>
+                
+                <div class="info-boxes">
+                    <div class="info-box">
+                        <h4>Your 30 Daily Ascension Windows</h4>
+                        <p>Your complete 24-hour daily windows will arrive within <strong>72 hours during beta</strong>. Each window includes context explanations, 3 action options, and flexibility reminders based on your birth chart and chosen Ascension Point.</p>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4>Comprehensive Reference Guide</h4>
+                        <p>You'll receive a detailed guide with 100+ action ideas for entrepreneurs, organized by window type to give you endless options throughout your 30 days.</p>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4>Beta Tracking Sheet</h4>
+                        <p>Track your experiences and help us understand how these window patterns work for your unique situation. Your feedback shapes the future of this system.</p>
+                    </div>
+                </div>
+                
+                <div class="download-section">
+                    <h3>🎁 What You'll Receive</h3>
+                    <p>Your Beta Tracking Sheet and Comprehensive Reference Guide will be included with your personalized windows when they arrive via email. Everything you need - complete 24-hour coverage, context explanations, multiple action options, and reference materials - delivered together.</p>
+                </div>
+                
+                <div class="next-steps">
+                    <h3>What Happens Next</h3>
+                    <ul>
+                        <li>Check your email for order confirmation and receipt</li>
+                        <li>Your personalized windows will arrive within 72 hours</li>
+                        <li>Start exploring your Comprehensive Reference Guide for daily guidance</li>
+                        <li>Track your experiences with the Beta Tracking Sheet</li>
+                        <li>New windows automatically delivered monthly</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-info">
+                    <p>
+                        <strong>Questions or need help?</strong> Email us at 
+                        <a href="mailto:support@ascensionwindows.com">support@ascensionwindows.com</a>
+                    </p>
+                    <p style="margin-top: 15px;">
+                        Remember: You can cancel your subscription anytime from your account dashboard or by contacting support.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const sessionId = urlParams.get('session_id');
+        
+        if (sessionId) {
+            const sessionInfo = document.getElementById('sessionInfo');
+            const sessionIdSpan = document.getElementById('sessionId');
+            
+            sessionInfo.style.display = 'block';
+            sessionIdSpan.textContent = sessionId.substring(0, 20) + '...';
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const infoBoxes = document.querySelectorAll('.info-box');
+            infoBoxes.forEach((box, index) => {
+                box.style.opacity = '0';
+                box.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    box.style.transition = 'all 0.6s ease';
+                    box.style.opacity = '1';
+                    box.style.transform = 'translateY(0)';
+                }, (index + 1) * 200);
+            });
+        });
+    </script>
+</body>
+</html>
