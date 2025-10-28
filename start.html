@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Your Ascension Map - AscensionWindows™</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 40px 0 20px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .form-container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .form-section {
+            margin-bottom: 40px;
+        }
+
+        .form-section h3 {
+            color: #333;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .required {
+            color: #ff6b6b;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .time-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr 80px;
+            gap: 10px;
+            align-items: end;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .ascension-points {
+            background: #f8f9ff;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+        }
+
+        .ascension-point {
+            margin-bottom: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+
+        .ascension-point:hover {
+            border-color: #667eea;
+        }
+
+        .ascension-point input[type="radio"] {
+            width: auto;
+            margin-right: 12px;
+        }
+
+        .point-info {
+            margin-left: 28px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .addon-points {
+            margin-top: 30px;
+        }
+
+        .addon-points h4 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .addon-point {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+
+        .addon-point:hover {
+            border-color: #667eea;
+        }
+
+        .addon-point input[type="checkbox"] {
+            width: auto;
+            margin-right: 12px;
+            margin-top: 2px;
+        }
+
+        .addon-info {
+            flex: 1;
+        }
+
+        .addon-price {
+            color: #667eea;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .pricing-summary {
+            background: #667eea;
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+
+        .pricing-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .total-row {
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            padding-top: 10px;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .submit-button {
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            color: white;
+            padding: 18px 40px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(255, 107, 107, 0.6);
+        }
+
+        .submit-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .help-text {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .loading-spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .time-inputs {
+                grid-template-columns: 1fr 1fr 60px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .form-container {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Start Your Ascension Map</h1>
+            <p>Provide your details to generate your personalized 30-day windows</p>
+        </div>
+
+        <div class="form-container">
+            <form id="ascensionForm">
+                <div class="form-section">
+                    <h3>Personal Information</h3>
+                    
+                    <div class="form-group">
+                        <label for="fullName">Full Name <span class="required">*</span></label>
+                        <input type="text" id="fullName" name="fullName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Birth Details</h3>
+                    
+                    <div class="form-group">
+                        <label for="birthDate">Date of Birth <span class="required">*</span></label>
+                        <input type="date" id="birthDate" name="birthDate" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="birthTime">Time of Birth</label>
+                        <div class="time-inputs">
+                            <input type="time" id="birthTime" name="birthTime">
+                            <select id="birthAmPm" name="birthAmPm">
+                                <option value="AM">AM</option>
+                                <option value="PM">PM</option>
+                            </select>
+                            <div></div>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="unknownTime" name="unknownTime">
+                            <label for="unknownTime">I don't know my exact time</label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="birthplace">Birthplace (City, Country) <span class="required">*</span></label>
+                            <input type="text" id="birthplace" name="birthplace" placeholder="e.g., New York, USA" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="timezone">Time Zone <span class="required">*</span></label>
+                            <select id="timezone" name="timezone" required>
+                                <option value="">Select your timezone...</option>
+                                <option value="America/New_York">Eastern Time (ET)</option>
+                                <option value="America/Chicago">Central Time (CT)</option>
+                                <option value="America/Denver">Mountain Time (MT)</option>
+                                <option value="America/Los_Angeles">Pacific Time (PT)</option>
+                                <option value="America/Anchorage">Alaska Time (AKT)</option>
+                                <option value="Pacific/Honolulu">Hawaii Time (HT)</option>
+                                <option value="Europe/London">GMT (London)</option>
+                                <option value="Europe/Paris">CET (Paris)</option>
+                                <option value="Europe/Berlin">CET (Berlin)</option>
+                                <option value="Asia/Tokyo">JST (Tokyo)</option>
+                                <option value="Australia/Sydney">AEST (Sydney)</option>
+                            </select>
+                            <div class="help-text">Which time zone should we base your Ascension Windows on?</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Ascension Points</h3>
+                    
+                    <div class="ascension-points">
+                        <h4>Primary Ascension Point <span class="required">*</span> (Choose One)</h4>
+                        
+                        <div class="ascension-point">
+                            <input type="radio" id="entrepreneur" name="primaryPoint" value="entrepreneur" required>
+                            <label for="entrepreneur"><strong>Entrepreneur/Business Owner</strong></label>
+                            <div class="point-info">Optimal timing for business decisions, launches, and strategic moves</div>
+                        </div>
+                        
+                        <div class="ascension-point">
+                            <input type="radio" id="career" name="primaryPoint" value="career" required>
+                            <label for="career"><strong>Career Advancement</strong></label>
+                            <div class="point-info">Best windows for job changes, promotions, and professional growth</div>
+                        </div>
+                        
+                        <div class="ascension-point">
+                            <input type="radio" id="wealth" name="primaryPoint" value="wealth" required>
+                            <label for="wealth"><strong>Wealth Building</strong></label>
+                            <div class="point-info">Ideal periods for investments, financial decisions, and money moves</div>
+                        </div>
+                        
+                        <div class="ascension-point">
+                            <input type="radio" id="relationships" name="primaryPoint" value="relationships" required>
+                            <label for="relationships"><strong>Relationships</strong></label>
+                            <div class="point-info">Timing for partnerships, networking, and relationship building</div>
+                        </div>
+                        
+                        <div class="ascension-point">
+                            <input type="radio" id="creativity" name="primaryPoint" value="creativity" required>
+                            <label for="creativity"><strong>Creative Projects</strong></label>
+                            <div class="point-info">Perfect windows for launches, creative work, and innovation</div>
+                        </div>
+                        
+                        <div class="ascension-point">
+                            <input type="radio" id="health" name="primaryPoint" value="health" required>
+                            <label for="health"><strong>Health & Vitality</strong></label>
+                            <div class="point-info">Windows for health decisions, fitness goals, and wellness initiatives</div>
+                        </div>
+                    </div>
+                    
+                    <div class="addon-points">
+                        <h4>Additional Ascension Points (+$5/mo each)</h4>
+                        <p class="help-text" style="margin-bottom: 20px;">Add extra focus areas to your windows for more comprehensive timing guidance</p>
+                        
+                        <div class="addon-point">
+                            <input type="checkbox" id="addon-entrepreneur" name="addonPoints" value="entrepreneur">
+                            <div class="addon-info">
+                                <label for="addon-entrepreneur"><strong>Entrepreneur/Business Owner</strong></label>
+                                <div class="point-info">Additional business timing insights</div>
+                            </div>
+                            <span class="addon-price">+$5/mo</span>
+                        </div>
+                        
+                        <div class="addon-point">
+                            <input type="checkbox" id="addon-career" name="addonPoints" value="career">
+                            <div class="addon-info">
+                                <label for="addon-career"><strong>Career Advancement</strong></label>
+                                <div class="point-info">Additional career timing guidance</div>
+                            </div>
+                            <span class="addon-price">+$5/mo</span>
+                        </div>
+                        
+                        <div class="addon-point">
+                            <input type="checkbox" id="addon-wealth" name="addonPoints" value="wealth">
+                            <div class="addon-info">
+                                <label for="addon-wealth"><strong>Wealth Building</strong></label>
+                                <div class="point-info">Additional financial timing insights</div>
+                            </div>
+                            <span class="addon-price">+$5/mo</span>
+                        </div>
+                        
+                        <div class="addon-point">
+                            <input type="checkbox" id="addon-relationships" name="addonPoints" value="relationships">
+                            <div class="addon-info">
+                                <label for="addon-relationships"><strong>Relationships</strong></label>
+                                <div class="point-info">Additional relationship timing insights</div>
+                            </div>
+                            <span class="addon-price">+$5/mo</span>
+                        </div>
+                        
+                        <div class="addon-point">
+                            <input type="checkbox" id="addon-creativity" name="addonPoints" value="creativity">
+                            <div class="addon-info">
+                                <label for="addon-creativity"><strong>Creative Projects</strong></label>
+                                <div class="point-info">Additional creative timing guidance</div>
+                            </div>
+                            <span class="addon-price">+$5/mo</span>
+                        </div>
+                        
+                        <div class="addon-point">
+                            <input type="checkbox" id="addon-health" name="addonPoints" value="health">
+                            <div class="addon-info">
+                                <label for="addon-health"><strong>Health & Vitality</strong></label>
+                                <div class="point-info">Additional health timing insights</div>
+                            </div>
+                            <span class="addon-price">+$5/mo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pricing-summary">
+                    <div class="pricing-row">
+                        <span>Ascension Windows™ Base</span>
+                        <span>$27.99/mo</span>
+                    </div>
+                    <div class="pricing-row" id="addonPricing" style="display: none;">
+                        <span id="addonDescription">Additional Points (0)</span>
+                        <span id="addonPrice">$0.00/mo</span>
+                    </div>
+                    <div class="pricing-row total-row">
+                        <span>Total Monthly</span>
+                        <span id="totalPrice">$27.99/mo</span>
+                    </div>
+                </div>
+
+                <div class="loading" id="loadingState">
+                    <div class="loading-spinner"></div>
+                    <p>Creating your secure checkout session...</p>
+                </div>
+
+                <button type="submit" class="submit-button" id="submitBtn">
+                    Continue to Secure Checkout
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('ascensionForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const loadingState = document.getElementById('loadingState');
+        
+        document.getElementById('unknownTime').addEventListener('change', function() {
+            const timeInput = document.getElementById('birthTime');
+            const amPmSelect = document.getElementById('birthAmPm');
+            
+            if (this.checked) {
+                timeInput.disabled = true;
+                amPmSelect.disabled = true;
+                timeInput.value = '';
+            } else {
+                timeInput.disabled = false;
+                amPmSelect.disabled = false;
+            }
+        });
+        
+        function updatePricing() {
+            const addonCheckboxes = document.querySelectorAll('input[name="addonPoints"]:checked');
+            const addonCount = addonCheckboxes.length;
+            const basePrice = 27.99;
+            const addonPrice = addonCount * 5;
+            const totalPrice = basePrice + addonPrice;
+            
+            const addonPricingDiv = document.getElementById('addonPricing');
+            const addonDescription = document.getElementById('addonDescription');
+            const addonPriceSpan = document.getElementById('addonPrice');
+            const totalPriceSpan = document.getElementById('totalPrice');
+            
+            if (addonCount > 0) {
+                addonPricingDiv.style.display = 'flex';
+                addonDescription.textContent = `Additional Points (${addonCount})`;
+                addonPriceSpan.textContent = `$${addonPrice.toFixed(2)}/mo`;
+            } else {
+                addonPricingDiv.style.display = 'none';
+            }
+            
+            totalPriceSpan.textContent = `$${totalPrice.toFixed(2)}/mo`;
+        }
+        
+        document.querySelectorAll('input[name="addonPoints"]').forEach(checkbox => {
+            checkbox.addEventListener('change', updatePricing);
+        });
+        
+        document.querySelectorAll('input[name="primaryPoint"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const primaryValue = this.value;
+                const correspondingAddon = document.getElementById(`addon-${primaryValue}`);
+                if (correspondingAddon) {
+                    correspondingAddon.checked = false;
+                    correspondingAddon.disabled = true;
+                    correspondingAddon.parentElement.style.opacity = '0.5';
+                }
+                
+                document.querySelectorAll('input[name="addonPoints"]').forEach(addon => {
+                    if (addon.value !== primaryValue) {
+                        addon.disabled = false;
+                        addon.parentElement.style.opacity = '1';
+                    }
+                });
+                
+                updatePricing();
+            });
+        });
+        
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            submitBtn.style.display = 'none';
+            loadingState.style.display = 'block';
+            
+            const formData = new FormData(form);
+            const data = {};
+            
+            data.fullName = formData.get('fullName');
+            data.email = formData.get('email');
+            data.birthDate = formData.get('birthDate');
+            data.birthTime = formData.get('unknownTime') ? null : formData.get('birthTime');
+            data.unknownTime = formData.get('unknownTime') === 'on';
+            data.birthplace = formData.get('birthplace');
+            data.timezone = formData.get('timezone');
+            data.primaryPoint = formData.get('primaryPoint');
+            
+            data.addonPoints = Array.from(document.querySelectorAll('input[name="addonPoints"]:checked'))
+                .map(checkbox => checkbox.value);
+            
+            data.basePrice = 27.99;
+            data.addonPrice = data.addonPoints.length * 5;
+            data.totalPrice = data.basePrice + data.addonPrice;
+            
+            try {
+                const response = await fetch('/api/create-checkout-session', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Failed to create checkout session');
+                }
+                
+                const session = await response.json();
+                window.location.href = session.url;
+                
+            } catch (error) {
+                console.error('Error:', error);
+                alert('There was an error processing your request. Please try again.');
+                
+                loadingState.style.display = 'none';
+                submitBtn.style.display = 'block';
+            }
+        });
+        
+        updatePricing();
+    </script>
+</body>
+</html>
