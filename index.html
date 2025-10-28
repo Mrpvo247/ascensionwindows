@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ascension Windows™ - Unlock Your Personal 30-Day Windows</title>
+    <meta name="description" content="Daily window insights for entrepreneurs—explore when your energy patterns suggest action, maintenance, or rest with your personalized Ascension Windows.">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header {
+            padding: 20px 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 24px;
+            line-height: 1.2;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero .subhead {
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            color: white;
+            padding: 18px 40px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 107, 107, 0.6);
+        }
+
+        .content {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .section {
+            margin-bottom: 80px;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #333;
+            text-align: center;
+        }
+
+        .section-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .feature {
+            background: #f8f9ff;
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .feature h4 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .step {
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+
+        .pricing {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .pricing h2 {
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 400px;
+            margin: 0 auto;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 800;
+            margin: 20px 0;
+        }
+
+        .price-note {
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .subhead {
+                font-size: 1.2rem;
+            }
+            
+            .section h2 {
+                font-size: 2rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="/" class="logo">AscensionWindows™</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Unlock Your Personal 30-Day Ascension Windows™</h1>
+            <p class="subhead">Daily window insights for entrepreneurs—explore when your energy patterns suggest action, maintenance, or rest.</p>
+            <a href="/start" class="cta-button">Start My Map — $27.99/mo (Beta)</a>
+        </div>
+    </section>
+
+    <main class="content">
+        <div class="container">
+            <section class="section">
+                <h2>What You Get</h2>
+                <div class="features-grid">
+                    <div class="feature">
+                        <h4>🗓️ 30 Daily Ascension Windows</h4>
+                        <p>Complete 24-hour daily coverage with context explanations, multiple action options per window, and flexibility reminders. Each day shows your full energy pattern from morning to night.</p>
+                    </div>
+                    <div class="feature">
+                        <h4>📋 Comprehensive Reference Guide</h4>
+                        <p>100+ specific action ideas organized by window type for entrepreneurs and small business owners. Never run out of options for any window.</p>
+                    </div>
+                    <div class="feature">
+                        <h4>📊 Beta Tracking Sheet</h4>
+                        <p>Template to track your experiences and validate how these window patterns work for your unique situation during the beta period.</p>
+                    </div>
+                    <div class="feature">
+                        <h4>🔄 Monthly Updates</h4>
+                        <p>Fresh 30-day windows delivered automatically, keeping you aligned with evolving energy cycles.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>How It Works</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h4>Submit Your Details</h4>
+                        <p>Provide birth information and select your primary Ascension Point (with optional add-ons).</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h4>We Calculate Your Windows</h4>
+                        <p>Using your birth chart and current planetary movements, we calculate your complete 24-hour daily windows with context and action options within 72 hours.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h4>Explore Your Windows</h4>
+                        <p>Use your daily Ascension Windows and reference guide to explore potential energy patterns for your business decisions.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Why It Works</h2>
+                <div class="section-content">
+                    <p>Ascension Windows combines ancient wisdom with modern entrepreneurial insights. By exploring your personal energy patterns with complete daily coverage, you can:</p>
+                    
+                    <div class="features-grid" style="margin-top: 30px;">
+                        <div class="feature">
+                            <h4>⚡ Complete 24-Hour Coverage</h4>
+                            <p>Every window explained with context, giving you 3 action options plus flexibility to choose what fits your business right now.</p>
+                        </div>
+                        <div class="feature">
+                            <h4>🛡️ Context for Each Window</h4>
+                            <p>Understand WHY each window has its energy quality with clear explanations of the astrological patterns at play.</p>
+                        </div>
+                        <div class="feature">
+                            <h4>🎯 Multiple Action Options</h4>
+                            <p>Get 3 specific action ideas per window, all drawn from your comprehensive reference guide for maximum relevance.</p>
+                        </div>
+                        <div class="feature">
+                            <h4>📈 Entrepreneur-Focused</h4>
+                            <p>Designed specifically for business owners who use strategic systems. Actions match your tools and workflows.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <section class="pricing">
+        <div class="container">
+            <h2>Beta Pricing</h2>
+            <div class="pricing-card">
+                <h3>Ascension Windows™</h3>
+                <div class="price">$27.99<span style="font-size: 1rem;">/month</span></div>
+                <p class="price-note">Includes: 30 Daily Windows (Complete 24hr Coverage) + Reference Guide + Tracking Tools</p>
+                <p style="margin-bottom: 30px; opacity: 0.9;">Additional Ascension Points: +$5/mo each</p>
+                <a href="/start" class="cta-button">Get Started Now</a>
+                <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.8;">Beta Access • Cancel Anytime • 72hr Delivery</p>
+                <p style="margin-top: 15px; font-size: 0.8rem; opacity: 0.7; line-height: 1.4;">
+                    <strong>Disclaimer:</strong> Ascension Windows™ are for entertainment and personal exploration purposes only. 
+                    Not financial, medical, or professional advice. Individual experiences may vary. 
+                    No guarantee of specific outcomes or results.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <p>&copy; 2024 AscensionWindows™. All rights reserved.</p>
+                </div>
+                <div>
+                    <a href="mailto:support@ascensionwindows.com">support@ascensionwindows.com</a>
+                </div>
+                <div>
+                    <a href="#" style="margin-right: 20px;">Privacy Policy</a>
+                    <a href="#" style="margin-right: 20px;">Terms of Service</a>
+                    <span style="color: #888;">Cancel anytime • For entertainment purposes only</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const hero = document.querySelector('.hero');
+            hero.style.opacity = '0';
+            hero.style.transform = 'translateY(30px)';
+            setTimeout(() => {
+                hero.style.transition = 'all 0.8s ease';
+                hero.style.opacity = '1';
+                hero.style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
+</body>
+                  </html>
